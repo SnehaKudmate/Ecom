@@ -42,6 +42,7 @@ function App() {
       <ToastContainer/>
         <Routes>
           {/* Public Routes */}
+         
           <Route path='/login' element={<LoginPage />} />
           <Route path='/signup' element={<SignUpPage />} />
           <Route path='/forgot_password' element={<ForgotPasswordPage/>} />

@@ -2,7 +2,6 @@ const {Cart} = require('../models/cartModel');
 const mongoose = require('mongoose')
 
 const addCartItem = async(req,res,next) =>{
-  console.log(req.body)
 try {
     const doc = await Cart.create({...req.body,user:res.user._id});
     const result = await doc.populate('product');
@@ -23,9 +22,11 @@ const fetchCartByUser = async(req,res,next)=>{
 }
 
 const updateCart = async (req, res, next) => {
-    const { id } = req.params;
+ 
+    const { id } = req.body;
+    
     const { quantity, product, user } = req.body;
-
+ 
     try {
         // Update the cart
         const updatedCart = await Cart.findByIdAndUpdate(id, { quantity, product:product.id, user }, { new: true }).populate('product');
